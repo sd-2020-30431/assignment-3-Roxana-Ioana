@@ -1,5 +1,11 @@
 <button (click)="turnBack()" class="btn btn-success">Back</button>
 
+<div [ngClass]="{
+            'green' :  report?.colour === 'green',
+            'red' :  report?.colour === 'red'
+         }"
+      >{{report?.colour}}
+
 <div class="panel panel-primary">
     <div class="panel-heading">
     <h2>{{type}} Report</h2>
@@ -61,4 +67,5 @@
         </tbody>
       </table>
     </div>
-  </div>
+</div>
+</div>

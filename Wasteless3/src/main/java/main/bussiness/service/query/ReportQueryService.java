@@ -25,6 +25,8 @@ public class ReportQueryService {
         List<GroceryList> lists = groceryListRepository.findAllByIdUser(idUser);
         List<GroceryItem> items = lists.stream().map(groceryList -> groceryItemRepository.findByIdList(groceryList.getIdList())).flatMap(Collection::stream).collect(Collectors.toList());
 
-        return new FactoryProvider().getFactory(reportType).getReport(reportType).sendReport(items);
+        Report report = new FactoryProvider().getFactory(reportType).getReport(reportType);
+
+        return report.sendReport(items);
     }
 }

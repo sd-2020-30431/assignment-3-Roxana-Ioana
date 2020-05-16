@@ -5,17 +5,17 @@ import main.presentation.dto.*;
 
 public class GetReportQueryResponse implements Response {
 
-    private ReportDTO report;
+    private ReportDTO reportDtoDecorated;
 
     public GetReportQueryResponse(ReportDTO report) {
-        this.report = report;
+        this.reportDtoDecorated = report;
     }
 
     public ReportDTO getReport() {
-        return report;
+        return reportDtoDecorated;
     }
 
     public void setReport(ReportDTO report) {
-        this.report = report;
+        this.reportDtoDecorated = report;
     }
 }

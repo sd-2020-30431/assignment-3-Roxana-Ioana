@@ -7,6 +7,7 @@ import java.util.*;
 
 @JsonRootName(value = "report")
 public class ReportDTO {
+
     private int nbOfGroceryItems;
     private List<GroceryItem> groceryItems;
     private int nbOfEatenCalories;

@@ -36,7 +36,7 @@ public class GoalController {
             CreateGoalCommand request = new CreateGoalCommand(goalMapper.convert(goalDTO));
 
             CreateGoalCommandHandler commandHandler = (CreateGoalCommandHandler)
-                    mediator.<CreateGoalCommand, CreateGoalCommandResponse>handle(request);
+                    mediator.<CreateGoalCommand, CreateGoalCommandResponse>getHandler(request);
             CreateGoalCommandResponse response = commandHandler.handle(request);
 
             return new ResponseEntity<>(response, HttpStatus.OK);
@@ -51,7 +51,7 @@ public class GoalController {
         FindGoalQuery request = new FindGoalQuery(idUser);
 
         FindGoalQueryHandler queryHandler = (FindGoalQueryHandler)
-                mediator.<FindGoalQuery, FindGoalQueryResponse>handle(request);
+                mediator.<FindGoalQuery, FindGoalQueryResponse>getHandler(request);
 
         FindGoalQueryResponse response = queryHandler.handle(request);
 
@@ -64,7 +64,7 @@ public class GoalController {
         GetDailyCaloriesQuery request = new GetDailyCaloriesQuery(idUser);
 
         GetDailyCaloriesQueryHandler queryHandler = (GetDailyCaloriesQueryHandler)
-                mediator.<GetDailyCaloriesQuery, GetDailyCaloriesQueryResponse>handle(request);
+                mediator.<GetDailyCaloriesQuery, GetDailyCaloriesQueryResponse>getHandler(request);
 
         GetDailyCaloriesQueryResponse response = queryHandler.handle(request);
 

@@ -33,7 +33,7 @@ public class UserController {
         //Optional<User> foundUser = userService.findUser(userDTO.getUsername(), userDTO.getPassword());
 
         FindUserQuery query = new FindUserQuery(userDTO.getUsername(), userDTO.getPassword());
-        FindUserQueryHandler handler = (FindUserQueryHandler) mediator.<FindUserQuery, FindUserQueryResponse>handle(query);
+        FindUserQueryHandler handler = (FindUserQueryHandler) mediator.<FindUserQuery, FindUserQueryResponse>getHandler(query);
         FindUserQueryResponse response = handler.handle(query);
 
         if (response.getUser() != null) {
@@ -50,7 +50,7 @@ public class UserController {
             //User user = userService.createUser();
 
             CreateUserCommand command = new CreateUserCommand(userMapper.convertToUser(userDTO));
-            CreateUserCommandHandler handler = (CreateUserCommandHandler) mediator.<CreateUserCommand, CreateUserCommandResponse>handle(command);
+            CreateUserCommandHandler handler = (CreateUserCommandHandler) mediator.<CreateUserCommand, CreateUserCommandResponse>getHandler(command);
             CreateUserCommandResponse response = handler.handle(command);
 
             return new ResponseEntity<>(response.getUser().getIdUser(), HttpStatus.OK);

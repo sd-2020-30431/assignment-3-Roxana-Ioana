@@ -26,7 +26,7 @@ public class ReportController {
     public ResponseEntity<ReportDTO> getReport(@PathVariable("idUser") int idUser, @PathVariable("type") String reportType) {
         GetReportQuery request = new GetReportQuery(idUser, ReportType.valueOf(reportType));
 
-        GetReportQueryHandler queryHandler = (GetReportQueryHandler) mediator.<GetReportQuery, GetReportQueryResponse>handle(request);
+        GetReportQueryHandler queryHandler = (GetReportQueryHandler) mediator.<GetReportQuery, GetReportQueryResponse>getHandler(request);
         GetReportQueryResponse response = queryHandler.handle(request);
 
         return new ResponseEntity<>(response.getReport(), HttpStatus.OK);

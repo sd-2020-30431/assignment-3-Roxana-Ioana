@@ -40,21 +40,8 @@ public class Mediator implements ApplicationContextAware {
         this.applicationContext = applicationContext;
     }
 
-    public <T extends Request, R extends Response> Handler<T, R> handle(T request) {
+    public <T extends Request, R extends Response> Handler<T, R> getHandler(T request) {
         Class<? extends Handler<? extends Request, ? extends Response>> handlerType = handlerMap.get(request.getClass());
         return (Handler<T, R>) applicationContext.getBean(handlerType);
     }
-
-  /*
-  *  public <T extends Request, R extends Response> R handle(T request) {
-        Handler<T, R> handler = getHandler(request);
-
-        return handler.handle(request);
-    }
-
-    private <T extends Request, R extends Response> Handler<T, R> getHandler(T request) {
-        Class<? extends Handler<? extends Request, ? extends Response>> handlerType = handlerMap.get(request.getClass());
-
-        return (Handler<T, R>) applicationContext.getBean(handlerType);
-    }*/
 }

@@ -36,7 +36,7 @@ public class GroceryListController {
         FindGroceryListsQuery request = new FindGroceryListsQuery(idUser);
 
         FindGroceryListsQueryHandler queryHandler = (FindGroceryListsQueryHandler)
-                mediator.<FindGroceryListsQuery, FindGroceryListsQueryResponse>handle(request);
+                mediator.<FindGroceryListsQuery, FindGroceryListsQueryResponse>getHandler(request);
         FindGroceryListsQueryResponse response = queryHandler.handle(request);
 
         return new ResponseEntity<>(response.getGroceryLists(), HttpStatus.OK);
@@ -49,7 +49,7 @@ public class GroceryListController {
             CreateGroceryListCommand request = new CreateGroceryListCommand(groceryListMapper.convertToGroceryList(groceryListDTO));
 
             CreateGroceryListCommandHandler queryHandler = (CreateGroceryListCommandHandler)
-                    mediator.<CreateGroceryListCommand, CreateGroceryListCommandResponse>handle(request);
+                    mediator.<CreateGroceryListCommand, CreateGroceryListCommandResponse>getHandler(request);
             CreateGroceryListCommandResponse response = queryHandler.handle(request);
 
             return new ResponseEntity<>(response.getGroceryList().getIdList(), HttpStatus.OK);
@@ -63,7 +63,7 @@ public class GroceryListController {
         DeleteGroceryListCommand request = new DeleteGroceryListCommand(idList);
 
         DeleteGroceryListCommandHandler commandHandler = (DeleteGroceryListCommandHandler)
-                mediator.<DeleteGroceryListCommand, DeleteGroceryListCommandResponse>handle(request);
+                mediator.<DeleteGroceryListCommand, DeleteGroceryListCommandResponse>getHandler(request);
         DeleteGroceryListCommandResponse response = commandHandler.handle(request);
 
         return new ResponseEntity<>(HttpStatus.OK);
